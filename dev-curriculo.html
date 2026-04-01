@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Jhonatan Henrique Favoreto</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config for Custom Colors/Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        techblue: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles for Print Optimization -->
+    <style>
+        body {
+            background-color: #f3f4f6; /* Gray-100 */
+        }
+
+        .page-container {
+            max-width: 21cm; /* A4 Width */
+            margin: 2rem auto;
+            background: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 3rem;
+            border-radius: 0.5rem;
+        }
+
+        /* Timeline Styles */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #2563eb; /* techblue-600 */
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            body {
+                background-color: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .page-container {
+                margin: 0;
+                padding: 1.5cm; /* Adjust padding for print margins */
+                box-shadow: none;
+                max-width: 100%;
+                border-radius: 0;
+            }
+            .no-print {
+                display: none !important;
+            }
+            /* Prevent awkward page breaks */
+            section {
+                page-break-inside: avoid;
+            }
+            h3, h4 {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800 font-sans antialiased">
+
+    <!-- Floating Print Button (Hidden in Print) -->
+    <div class="fixed top-6 right-6 no-print z-50">
+        <button onclick="window.print()" class="bg-techblue-600 hover:bg-techblue-700 text-white font-medium py-2 px-4 rounded-lg shadow-lg flex items-center gap-2 transition duration-300">
+            <i class="ph ph-printer text-xl"></i>
+            Salvar PDF
+        </button>
+    </div>
+
+    <!-- Resume Container -->
+    <div class="page-container">
+
+        <!-- HEADER -->
+        <header class="border-b-2 border-gray-200 pb-6 mb-6">
+            <h1 class="text-4xl font-bold text-gray-900 tracking-tight uppercase">
+                Jhonatan Henrique Favoreto
+                <span class="text-xl text-gray-500 font-normal normal-case capitalize ml-2">(Natan)</span>
+            </h1>
+            <h2 class="text-xl text-techblue-600 font-semibold mt-1">Desenvolvedor Júnior (Full-Stack / Backend / Mobile)</h2>
+
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-4 text-sm text-gray-600 font-medium">
+                <span class="flex items-center gap-1.5"><i class="ph ph-map-pin text-techblue-600 text-lg"></i> Valinhos, SP – Brasil</span>
+                <span class="flex items-center gap-1.5"><i class="ph ph-user text-techblue-600 text-lg"></i> 18 anos | Ele/Dele</span>
+                <a href="mailto:jhonatan.favoreto18@gmail.com" class="flex items-center gap-1.5 hover:text-techblue-600 transition">
+                    <i class="ph ph-envelope text-techblue-600 text-lg"></i> jhonatan.favoreto18@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/jhonatan-henrique-favoreto-72017434b/" target="_blank" class="flex items-center gap-1.5 hover:text-techblue-600 transition">
+                    <i class="ph ph-linkedin-logo text-techblue-600 text-lg"></i> LinkedIn
+                </a>
+                <a href="https://github.com/JhonatanFavoreto" target="_blank" class="flex items-center gap-1.5 hover:text-techblue-600 transition">
+                    <i class="ph ph-github-logo text-techblue-600 text-lg"></i> GitHub
+                </a>
+            </div>
+        </header>
+
+        <!-- OBJETIVO & RESUMO -->
+        <section class="mb-6">
+            <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wider mb-2 flex items-center gap-2">
+                <i class="ph ph-target text-techblue-600 text-xl"></i> Perfil Profissional
+            </h3>
+            <p class="text-sm leading-relaxed mb-3">
+                <strong class="text-gray-900">Objetivo:</strong> Conquistar minha primeira oportunidade como Desenvolvedor Júnior (Full-Stack, Backend ou Mobile) até o final de 2026.
+            </p>
+            <p class="text-sm leading-relaxed text-gray-700 text-justify">
+                Estudante dedicado de 18 anos, cursando o 3º semestre do Técnico em Desenvolvimento de Sistemas no SENAI Valinhos e o 3º ano do Ensino Médio no SESI Valinhos. Apaixonado por tecnologia, com sólida base em lógica de programação, desenvolvimento web e mobile. Busco aplicar meus conhecimentos em projetos reais, colaborando com equipes inovadoras enquanto continuo me desenvolvendo e evoluindo como profissional da área tech.
+            </p>
+        </section>
+
+        <!-- FORMAÇÃO ACADÊMICA -->
+        <section class="mb-6">
+            <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <i class="ph ph-graduation-cap text-techblue-600 text-xl"></i> Formação Acadêmica
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-gray-50 p-3 rounded border border-gray-100">
+                    <h4 class="font-bold text-gray-900 text-sm">Técnico em Desenvolvimento de Sistemas</h4>
+                    <p class="text-sm text-techblue-600 font-medium">SENAI Valinhos</p>
+                    <p class="text-xs text-gray-500 mt-1"><i class="ph ph-calendar-blank inline"></i> 2025 – Previsão: Final de 2026</p>
+                    <p class="text-xs text-gray-600 mt-1 font-medium bg-techblue-100 text-techblue-700 inline-block px-2 py-0.5 rounded">Cursando 3º semestre</p>
+                </div>
+                <div class="bg-gray-50 p-3 rounded border border-gray-100">
+                    <h4 class="font-bold text-gray-900 text-sm">Ensino Médio</h4>
+                    <p class="text-sm text-techblue-600 font-medium">SESI Valinhos</p>
+                    <p class="text-xs text-gray-500 mt-1"><i class="ph ph-calendar-blank inline"></i> Previsão: 2026</p>
+                    <p class="text-xs text-gray-600 mt-1 font-medium bg-techblue-100 text-techblue-700 inline-block px-2 py-0.5 rounded">Cursando 3º ano</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HABILIDADES TÉCNICAS -->
+        <section class="mb-6">
+            <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <i class="ph ph-code text-techblue-600 text-xl"></i> Habilidades Técnicas e Ferramentas
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                <!-- Frontend -->
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-1">Frontend & Mobile</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">HTML5</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">CSS3</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">JavaScript</span>
+                        <span class="px-2 py-1 bg-techblue-50 text-techblue-700 text-xs font-medium rounded border border-techblue-100">React</span>
+                        <span class="px-2 py-1 bg-techblue-50 text-techblue-700 text-xs font-medium rounded border border-techblue-100">Next.js</span>
+                        <span class="px-2 py-1 bg-techblue-50 text-techblue-700 text-xs font-medium rounded border border-techblue-100">React Native</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Expo</span>
+                    </div>
+                </div>
+                <!-- Backend -->
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-1">Backend & Banco de Dados</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-techblue-50 text-techblue-700 text-xs font-medium rounded border border-techblue-100">Node.js</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Express</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Prisma</span>
+                        <span class="px-2 py-1 bg-techblue-50 text-techblue-700 text-xs font-medium rounded border border-techblue-100">PostgreSQL</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">SQL</span>
+                    </div>
+                </div>
+                <!-- Tools -->
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-1">Ferramentas & Ambiente</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Git & GitHub</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Docker</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">VS Code</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Linux & Windows</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Figma</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Postman</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Trello & Notion</span>
+                    </div>
+                </div>
+                <!-- Methodologies & Soft Skills -->
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-1">Metodologias & Soft Skills</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Scrum & Kanban</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Design Thinking</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Engenharia de Requisitos</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Trabalho em Equipe</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">Aprendizado Contínuo</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JORNADA ACADÊMICA (SENAI) -->
+        <section class="mb-6">
+            <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wider mb-4 flex items-center gap-2">
+                <i class="ph ph-path text-techblue-600 text-xl"></i> Jornada Acadêmica (SENAI)
+            </h3>
+
+            <div class="relative border-l-2 border-gray-200 ml-2 pl-6 space-y-4">
+
+                <!-- 1 Semestre -->
+                <div class="timeline-item relative">
+                    <h4 class="text-sm font-bold text-gray-900 flex items-center gap-2">
+                        1º Semestre
+                        <span class="text-[10px] uppercase font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded">Concluído</span>
+                    </h4>
+                    <p class="text-sm text-gray-600 mt-1">Lógica de Programação e Algoritmos, Sistemas Operacionais, Engenharia de Requisitos, Arquitetura de Redes com IoT.</p>
+                </div>
+
+                <!-- 2 Semestre -->
+                <div class="timeline-item relative">
+                    <h4 class="text-sm font-bold text-gray-900 flex items-center gap-2">
+                        2º Semestre
+                        <span class="text-[10px] uppercase font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded">Concluído</span>
+                    </h4>
+                    <p class="text-sm text-gray-600 mt-1">Sistemas de Banco de Dados, Linguagens de Marcação (HTML/CSS), Fundamentos de Backend.</p>
+                </div>
+
+                <!-- 3 Semestre -->
+                <div class="timeline-item relative">
+                    <h4 class="text-sm font-bold text-techblue-600 flex items-center gap-2">
+                        3º Semestre
+                        <span class="text-[10px] uppercase font-bold bg-techblue-100 text-techblue-700 px-2 py-0.5 rounded">Em Andamento</span>
+                    </h4>
+                    <p class="text-sm text-gray-800 font-medium mt-1">Backend Avançado (POO, MVC, Frameworks, APIs), Front-End Avançado (React, UX/UI), Desenvolvimento Mobile (React Native).</p>
+                </div>
+
+                <!-- 4 Semestre -->
+                <div class="timeline-item relative before:bg-gray-300"> <!-- Gray dot for future -->
+                    <h4 class="text-sm font-bold text-gray-500 flex items-center gap-2">
+                        4º Semestre
+                        <span class="text-[10px] uppercase font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Em Breve</span>
+                    </h4>
+                    <p class="text-sm text-gray-500 mt-1">IoT, Testes de Software, Projetos Finais e Portfólio.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- HABILIDADES COMPLEMENTARES & CERTIFICADOS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Complementares -->
+            <section>
+                <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <i class="ph ph-star text-techblue-600 text-xl"></i> Hab. Complementares
+                </h3>
+                <ul class="text-sm text-gray-700 space-y-2 list-none">
+                    <li class="flex items-start gap-2">
+                        <i class="ph ph-check-circle text-techblue-500 mt-0.5"></i>
+                        Edição de vídeo, imagem e áudio
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="ph ph-check-circle text-techblue-500 mt-0.5"></i>
+                        Pacote Office (Word, PowerPoint, Excel Básico)
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="ph ph-check-circle text-techblue-500 mt-0.5"></i>
+                        Canva (Design e Apresentações)
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Certificados -->
+            <section>
+                <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <i class="ph ph-certificate text-techblue-600 text-xl"></i> Certificados (SENAI)
+                </h3>
+                <ul class="text-sm text-gray-700 space-y-1.5 list-none">
+                    <li class="flex items-start gap-2">
+                        <i class="ph ph-medal text-techblue-500 mt-0.5"></i>
+                        Por dentro da Segurança Cibernética
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="ph ph-medal text-techblue-500 mt-0.5"></i>
+                        Fluência & Ética na Inteligência Artificial
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="ph ph-medal text-techblue-500 mt-0.5"></i>
+                        Desvendando a Descarbonização
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="ph ph-medal text-techblue-500 mt-0.5"></i>
+                        Competência Transversal – Seg. no Trabalho
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="ph ph-medal text-techblue-500 mt-0.5"></i>
+                        Regulamentação da LGPD e atuação da ANPD
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+    </div>
+
+</body>
+</html>
