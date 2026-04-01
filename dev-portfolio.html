@@ -1,0 +1,1431 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jhonatan Henrique Favoreto | Junior Full-Stack Developer</title>
+        <meta
+            name="description"
+            content="Portfolio of Jhonatan Henrique Favoreto (Natan) - Junior Developer from Valinhos, SP." />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet" />
+
+        <!-- Phosphor Icons -->
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        },
+                        colors: {
+                            dark: {
+                                DEFAULT: '#0a0a0a',
+                                card: '#141414',
+                                border: '#262626',
+                            },
+                            brand: {
+                                DEFAULT: '#3b82f6',
+                                light: '#60a5fa',
+                                neon: '#00b4ff',
+                            },
+                        },
+                        boxShadow: {
+                            neon: '0 0 15px rgba(0, 180, 255, 0.5)',
+                            'neon-hover': '0 0 25px rgba(0, 180, 255, 0.8)',
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <style>
+            /* Custom Scrollbar */
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #0a0a0a;
+            }
+            html:not(.dark) ::-webkit-scrollbar-track {
+                background: #f1f5f9;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #3b82f6;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #00b4ff;
+            }
+
+            /* Scroll Reveal Animations */
+            .reveal {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+            }
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Glassmorphism */
+            .glass {
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            html:not(.dark) .glass {
+                background: rgba(255, 255, 255, 0.7);
+                border: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            /* Gradient Text */
+            .text-gradient {
+                background: linear-gradient(to right, #3b82f6, #00b4ff);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-slate-50 text-slate-900 dark:bg-dark dark:text-gray-100 transition-colors duration-300 antialiased selection:bg-brand selection:text-white">
+        <!-- Navigation -->
+        <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+            <div class="glass border-b border-transparent dark:border-dark-border">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between h-20">
+                        <!-- Logo -->
+                        <div
+                            class="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+                            onclick="window.scrollTo(0, 0)">
+                            <span class="text-2xl font-bold tracking-tighter text-gradient">
+                                Jhonatan.
+                            </span>
+                            <i
+                                class="ph-fill ph-seal-check text-brand text-xl"
+                                title="Verified Professional"></i>
+                        </div>
+
+                        <!-- Desktop Menu -->
+                        <div class="hidden md:block">
+                            <div class="ml-10 flex items-center space-x-6">
+                                <a
+                                    href="#about"
+                                    class="hover:text-brand transition-colors text-sm font-medium"
+                                    data-i18n="nav_about">
+                                    About
+                                </a>
+                                <a
+                                    href="#skills"
+                                    class="hover:text-brand transition-colors text-sm font-medium"
+                                    data-i18n="nav_skills">
+                                    Skills
+                                </a>
+                                <a
+                                    href="#journey"
+                                    class="hover:text-brand transition-colors text-sm font-medium"
+                                    data-i18n="nav_journey">
+                                    Journey
+                                </a>
+                                <a
+                                    href="#projects"
+                                    class="hover:text-brand transition-colors text-sm font-medium"
+                                    data-i18n="nav_projects">
+                                    Projects
+                                </a>
+                                <a
+                                    href="#certificates"
+                                    class="hover:text-brand transition-colors text-sm font-medium"
+                                    data-i18n="nav_certificates">
+                                    Certificates
+                                </a>
+
+                                <div class="h-6 w-px bg-gray-300 dark:bg-gray-700 mx-2"></div>
+
+                                <!-- Lang Selector -->
+                                <select
+                                    id="lang-select"
+                                    class="bg-transparent border-none text-sm font-medium cursor-pointer focus:ring-0 outline-none dark:text-gray-200">
+                                    <option value="en" class="text-black">EN 🇬🇧</option>
+                                    <option value="pt" class="text-black">PT 🇧🇷</option>
+                                    <option value="es" class="text-black">ES 🇪🇸</option>
+                                </select>
+
+                                <!-- Theme Toggle -->
+                                <button
+                                    id="theme-toggle"
+                                    class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+                                    <i class="ph ph-moon text-xl hidden dark:block"></i>
+                                    <i class="ph ph-sun text-xl block dark:hidden"></i>
+                                </button>
+
+                                <!-- GitHub Btn -->
+                                <a
+                                    href="https://github.com/JhonatanFavoreto"
+                                    target="_blank"
+                                    class="flex items-center gap-2 bg-slate-900 text-white dark:bg-white dark:text-black px-4 py-2 rounded-full font-medium hover:scale-105 transition-transform text-sm">
+                                    <i class="ph ph-github-logo text-lg"></i>
+                                    <span data-i18n="nav_github">GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Menu Button -->
+                        <div class="md:hidden flex items-center gap-4">
+                            <button
+                                id="theme-toggle-mobile"
+                                class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+                                <i class="ph ph-moon text-xl hidden dark:block"></i>
+                                <i class="ph ph-sun text-xl block dark:hidden"></i>
+                            </button>
+                            <button
+                                id="mobile-menu-btn"
+                                class="text-gray-700 dark:text-gray-300 hover:text-brand focus:outline-none">
+                                <i class="ph ph-list text-3xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div
+                    id="mobile-menu"
+                    class="hidden md:hidden bg-white dark:bg-dark-card border-t dark:border-dark-border px-2 pt-2 pb-4 space-y-1">
+                    <a
+                        href="#about"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+                        data-i18n="nav_about">
+                        About
+                    </a>
+                    <a
+                        href="#skills"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+                        data-i18n="nav_skills">
+                        Skills
+                    </a>
+                    <a
+                        href="#journey"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+                        data-i18n="nav_journey">
+                        Journey
+                    </a>
+                    <a
+                        href="#projects"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+                        data-i18n="nav_projects">
+                        Projects
+                    </a>
+                    <a
+                        href="#certificates"
+                        class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+                        data-i18n="nav_certificates">
+                        Certificates
+                    </a>
+                    <div class="px-3 py-2 flex items-center justify-between">
+                        <span class="text-sm font-medium" data-i18n="lang_label">Language:</span>
+                        <select
+                            id="lang-select-mobile"
+                            class="bg-gray-100 dark:bg-gray-800 rounded px-2 py-1 text-sm outline-none">
+                            <option value="en">English 🇬🇧</option>
+                            <option value="pt">Português 🇧🇷</option>
+                            <option value="es">Español 🇪🇸</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section
+            id="home"
+            class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+            <div
+                class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+            <div
+                class="absolute top-1/3 right-1/4 w-96 h-96 bg-cyan-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+                    <!-- Text Content -->
+                    <div class="flex-1 text-center lg:text-left reveal">
+                        <div
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-brand text-sm font-semibold mb-6">
+                            <span class="relative flex h-3 w-3">
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                                <span
+                                    class="relative inline-flex rounded-full h-3 w-3 bg-brand"></span>
+                            </span>
+                            <span data-i18n="hero_badge">Available for opportunities in 2026</span>
+                        </div>
+
+                        <h1 class="font-bold tracking-tight leading-tight mb-4">
+                            <span
+                                class="block text-sm sm:text-base lg:text-lg font-medium text-gray-500 dark:text-gray-400 mb-2"
+                                data-i18n="hero_greeting">
+                                Hello, I'm
+                            </span>
+                            <span class="block text-3xl sm:text-4xl lg:text-5xl text-gradient">
+                                Jhonatan Henrique Favoreto
+                            </span>
+                        </h1>
+
+                        <h2
+                            class="text-2xl lg:text-3xl text-gray-600 dark:text-gray-400 font-medium mb-6">
+                            Junior Full-Stack Developer
+                        </h2>
+
+                        <p
+                            class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+                            data-i18n="hero_bio">
+                            18-year-old developer from Valinhos, SP. Systems Development student at
+                            SENAI. Passionate about creating efficient, responsive, and scalable
+                            digital solutions. Goal: Impact the tech market by the end of 2026.
+                        </p>
+
+                        <div
+                            class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                            <a
+                                href="#contact"
+                                class="w-full sm:w-auto px-8 py-3 rounded-full bg-brand hover:bg-brand-light text-white font-semibold transition-all shadow-neon hover:shadow-neon-hover flex items-center justify-center gap-2">
+                                <i class="ph ph-paper-plane-tilt text-xl"></i>
+                                <span data-i18n="hero_btn_contact">Contact Me</span>
+                            </a>
+                            <a
+                                href="#projects"
+                                class="w-full sm:w-auto px-8 py-3 rounded-full glass font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-all flex items-center justify-center gap-2">
+                                <i class="ph ph-code text-xl"></i>
+                                <span data-i18n="hero_btn_projects">View Projects</span>
+                            </a>
+                        </div>
+
+                        <div
+                            class="flex items-center justify-center lg:justify-start gap-4 mt-8 text-gray-500 dark:text-gray-400">
+                            <a
+                                href="https://www.linkedin.com/in/jhonatan-henrique-favoreto-72017434b/"
+                                target="_blank"
+                                class="hover:text-brand transition-colors">
+                                <i class="ph-fill ph-linkedin-logo text-3xl"></i>
+                            </a>
+                            <a
+                                href="https://github.com/JhonatanFavoreto"
+                                target="_blank"
+                                class="hover:text-brand transition-colors">
+                                <i class="ph-fill ph-github-logo text-3xl"></i>
+                            </a>
+                            <a
+                                href="mailto:jhonatan.favoreto18@gmail.com"
+                                class="hover:text-brand transition-colors">
+                                <i class="ph-fill ph-envelope-simple text-3xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Avatar -->
+                    <div class="flex-1 flex justify-center lg:justify-end reveal">
+                        <div class="relative w-64 h-64 lg:w-96 lg:h-96">
+                            <div
+                                class="absolute inset-0 rounded-full bg-gradient-to-tr from-brand to-cyan-400 animate-pulse blur-xl opacity-50"></div>
+                            <img
+                                src="https://github.com/JhonatanFavoreto.png"
+                                alt="Jhonatan Henrique Favoreto"
+                                class="relative w-full h-full object-cover rounded-full border-4 border-white dark:border-dark-card shadow-2xl z-10" />
+                            <div
+                                class="absolute top-10 -left-6 bg-white dark:bg-dark-card p-3 rounded-xl shadow-lg z-20 animate-bounce"
+                                style="animation-duration: 3s">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                    class="w-8 h-8"
+                                    alt="React" />
+                            </div>
+                            <div
+                                class="absolute bottom-10 -right-4 bg-white dark:bg-dark-card p-3 rounded-xl shadow-lg z-20 animate-bounce"
+                                style="animation-duration: 4s; animation-delay: 1s">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                                    class="w-8 h-8"
+                                    alt="Node.js" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 bg-white dark:bg-[#0f0f0f]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2
+                        class="text-brand font-semibold tracking-wide uppercase text-sm mb-2"
+                        data-i18n="sec_about_label">
+                        Intro
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-bold" data-i18n="sec_about_title">
+                        About Me
+                    </h3>
+                    <div class="w-20 h-1 bg-brand mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+                    <div class="glass p-8 rounded-3xl relative overflow-hidden group">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-brand/10 rounded-bl-full -z-10 transition-transform group-hover:scale-150"></div>
+                        <h4 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                            <i class="ph-fill ph-user text-brand"></i>
+                            <span data-i18n="about_card_title">Who am I?</span>
+                        </h4>
+                        <p
+                            class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4"
+                            data-i18n="about_p1">
+                            I am an 18-year-old Systems Development student currently in my 3rd
+                            semester at SENAI Valinhos, concurrently finishing my High School
+                            education at SESI.
+                        </p>
+                        <p
+                            class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4"
+                            data-i18n="about_p2">
+                            My journey in tech started with a profound curiosity for how digital
+                            platforms shape our world. Today, I build full-stack web and mobile
+                            applications focusing on clean code, scalability, and excellent user
+                            experiences.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mt-6">
+                            <span
+                                class="px-3 py-1 bg-gray-100 dark:bg-dark border dark:border-dark-border rounded-full text-sm">
+                                Valinhos, SP 🇧🇷
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gray-100 dark:bg-dark border dark:border-dark-border rounded-full text-sm"
+                                data-i18n="about_tag_age">
+                                18 Years old
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gray-100 dark:bg-dark border dark:border-dark-border rounded-full text-sm"
+                                data-i18n="about_tag_pro">
+                                He/Him
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div
+                            class="flex items-start gap-4 p-6 bg-slate-50 dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border hover:border-brand/50 transition-colors">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center flex-shrink-0">
+                                <i class="ph-fill ph-target text-brand text-2xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xl font-bold mb-2" data-i18n="about_goal_title">
+                                    My Goal
+                                </h5>
+                                <p
+                                    class="text-gray-600 dark:text-gray-400"
+                                    data-i18n="about_goal_desc">
+                                    To secure my first opportunity as a Junior Developer by the end
+                                    of 2026, contributing to impactful projects while continuously
+                                    expanding my technical stack.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex items-start gap-4 p-6 bg-slate-50 dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border hover:border-brand/50 transition-colors">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center flex-shrink-0">
+                                <i class="ph-fill ph-graduation-cap text-brand text-2xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xl font-bold mb-2" data-i18n="about_edu_title">
+                                    Education
+                                </h5>
+                                <ul class="text-gray-600 dark:text-gray-400 space-y-2">
+                                    <li>
+                                        <strong>SENAI:</strong>
+                                        <span data-i18n="about_edu_senai">
+                                            Systems Development Technician (2025-2026)
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <strong>SESI:</strong>
+                                        <span data-i18n="about_edu_sesi">
+                                            High School (Graduating 2026)
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section id="skills" class="py-24 bg-slate-50 dark:bg-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2
+                        class="text-brand font-semibold tracking-wide uppercase text-sm mb-2"
+                        data-i18n="sec_skills_label">
+                        Expertise
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-bold" data-i18n="sec_skills_title">
+                        Tech Stack
+                    </h3>
+                    <div class="w-20 h-1 bg-brand mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+                    <!-- Frontend -->
+                    <div
+                        class="bg-white dark:bg-dark-card p-8 rounded-3xl border border-gray-100 dark:border-dark-border hover:-translate-y-2 transition-transform shadow-lg shadow-gray-200/50 dark:shadow-none">
+                        <h4
+                            class="text-xl font-bold mb-6 flex items-center gap-2 border-b dark:border-dark-border pb-4">
+                            <i class="ph-fill ph-browser text-brand"></i>
+                            Frontend & Mobile
+                        </h4>
+                        <div class="flex flex-wrap gap-3">
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                    class="w-5 h-5" />
+                                HTML5
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                    class="w-5 h-5" />
+                                CSS3
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                    class="w-5 h-5" />
+                                JavaScript
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                    class="w-5 h-5" />
+                                React
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+                                    class="w-5 h-5 dark:invert" />
+                                Next.js
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <i class="ph-fill ph-device-mobile text-brand"></i>
+                                React Native
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg text-sm font-semibold">
+                                Expo
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend -->
+                    <div
+                        class="bg-white dark:bg-dark-card p-8 rounded-3xl border border-gray-100 dark:border-dark-border hover:-translate-y-2 transition-transform shadow-lg shadow-gray-200/50 dark:shadow-none">
+                        <h4
+                            class="text-xl font-bold mb-6 flex items-center gap-2 border-b dark:border-dark-border pb-4">
+                            <i class="ph-fill ph-hard-drives text-brand"></i>
+                            Backend & Database
+                        </h4>
+                        <div class="flex flex-wrap gap-3">
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                                    class="w-5 h-5" />
+                                Node.js
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                                    class="w-5 h-5 dark:invert" />
+                                Express
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <span class="font-bold">◬</span>
+                                Prisma
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                                    class="w-5 h-5" />
+                                PostgreSQL
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <i class="ph-fill ph-database text-brand"></i>
+                                SQL
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools -->
+                    <div
+                        class="bg-white dark:bg-dark-card p-8 rounded-3xl border border-gray-100 dark:border-dark-border hover:-translate-y-2 transition-transform shadow-lg shadow-gray-200/50 dark:shadow-none lg:col-span-1 md:col-span-2">
+                        <h4
+                            class="text-xl font-bold mb-6 flex items-center gap-2 border-b dark:border-dark-border pb-4">
+                            <i class="ph-fill ph-wrench text-brand"></i>
+                            Dev Tools & OS
+                        </h4>
+                        <div class="flex flex-wrap gap-3">
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                                    class="w-5 h-5" />
+                                Git & GitHub
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+                                    class="w-5 h-5" />
+                                Linux
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg"
+                                    class="w-5 h-5 text-blue-500" />
+                                Windows
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                                    class="w-5 h-5" />
+                                VS Code
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                                    class="w-5 h-5" />
+                                Docker
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                                    class="w-5 h-5" />
+                                Figma
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg text-sm">
+                                Trello & Notion
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-gray-100 dark:bg-[#1f1f1f] px-4 py-2 rounded-lg text-sm">
+                                Postman
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center reveal">
+                    <p
+                        class="text-sm text-gray-500 dark:text-gray-400 mb-4"
+                        data-i18n="skills_additional_title">
+                        Additional & Soft Skills
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <span
+                            class="px-4 py-2 rounded-full border border-gray-200 dark:border-dark-border text-sm"
+                            data-i18n="skill_media">
+                            Media Editing (Video, Audio, Image)
+                        </span>
+                        <span
+                            class="px-4 py-2 rounded-full border border-gray-200 dark:border-dark-border text-sm">
+                            Canva & Office Suite
+                        </span>
+                        <span
+                            class="px-4 py-2 rounded-full border border-gray-200 dark:border-dark-border text-sm">
+                            Design Thinking
+                        </span>
+                        <span
+                            class="px-4 py-2 rounded-full border border-gray-200 dark:border-dark-border text-sm">
+                            Scrum & Kanban
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SENAI Journey -->
+        <section id="journey" class="py-24 bg-white dark:bg-[#0f0f0f]">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2
+                        class="text-brand font-semibold tracking-wide uppercase text-sm mb-2"
+                        data-i18n="sec_journey_label">
+                        Education
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-bold" data-i18n="sec_journey_title">
+                        My SENAI Journey
+                    </h3>
+                    <p class="text-gray-500 mt-4 max-w-2xl mx-auto" data-i18n="sec_journey_desc">
+                        Tracking my progress through the Systems Development technical course.
+                    </p>
+                    <div class="w-20 h-1 bg-brand mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="space-y-6 reveal">
+                    <!-- Semester 1 -->
+                    <div
+                        class="bg-slate-50 dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border flex flex-col md:flex-row gap-6 items-center hover:border-brand/30 transition-colors">
+                        <div
+                            class="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center flex-shrink-0 text-2xl">
+                            <i class="ph-bold ph-check"></i>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <div
+                                class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                                <h4 class="text-xl font-bold" data-i18n="sem_1_title">
+                                    Semester 1
+                                </h4>
+                                <span
+                                    class="text-xs font-bold px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded"
+                                    data-i18n="status_completed">
+                                    Completed
+                                </span>
+                            </div>
+                            <p
+                                class="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed"
+                                data-i18n="sem_1_desc">
+                                Programming Logic & Algorithms, Operating Systems, Requirements
+                                Engineering, Network Architecture with IoT.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Semester 2 -->
+                    <div
+                        class="bg-slate-50 dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border flex flex-col md:flex-row gap-6 items-center hover:border-brand/30 transition-colors">
+                        <div
+                            class="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center flex-shrink-0 text-2xl">
+                            <i class="ph-bold ph-check"></i>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <div
+                                class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                                <h4 class="text-xl font-bold" data-i18n="sem_2_title">
+                                    Semester 2
+                                </h4>
+                                <span
+                                    class="text-xs font-bold px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded"
+                                    data-i18n="status_completed">
+                                    Completed
+                                </span>
+                            </div>
+                            <p
+                                class="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed"
+                                data-i18n="sem_2_desc">
+                                Database Systems, Markup Languages (HTML & CSS: fundamentals,
+                                responsiveness), Backend Foundations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Semester 3 -->
+                    <div
+                        class="glass p-6 rounded-2xl border border-brand/40 flex flex-col md:flex-row gap-6 items-center relative overflow-hidden shadow-lg shadow-brand/5">
+                        <div class="absolute inset-0 bg-brand/5 dark:bg-brand/10 -z-10"></div>
+                        <div
+                            class="w-16 h-16 rounded-full bg-brand/20 text-brand flex items-center justify-center flex-shrink-0 text-2xl animate-pulse">
+                            <i class="ph-bold ph-arrows-clockwise"></i>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <div
+                                class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                                <h4 class="text-xl font-bold" data-i18n="sem_3_title">
+                                    Semester 3
+                                </h4>
+                                <span
+                                    class="text-xs font-bold px-2 py-1 bg-brand/20 text-brand rounded"
+                                    data-i18n="status_current">
+                                    In Progress
+                                </span>
+                            </div>
+                            <p
+                                class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed"
+                                data-i18n="sem_3_desc">
+                                Backend Advanced (OOP, MVC, Frameworks, API Development), Front-End
+                                Development (Advanced JavaScript, React, UX/UI), Mobile Development
+                                (React Native, APIs, Hardware Integration).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Semester 4 -->
+                    <div
+                        class="bg-gray-50 dark:bg-dark border border-gray-200 dark:border-dark-border p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-center opacity-80 hover:opacity-100 transition-opacity">
+                        <div
+                            class="w-16 h-16 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-500 flex items-center justify-center flex-shrink-0 text-2xl">
+                            <i class="ph-bold ph-lock-key"></i>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <div
+                                class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                                <h4 class="text-xl font-bold text-gray-500" data-i18n="sem_4_title">
+                                    Semester 4
+                                </h4>
+                                <span
+                                    class="text-xs font-bold px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-500 rounded"
+                                    data-i18n="status_upcoming">
+                                    Upcoming
+                                </span>
+                            </div>
+                            <p
+                                class="text-gray-500 text-sm md:text-base leading-relaxed"
+                                data-i18n="sem_4_desc">
+                                IoT Development, Software Testing, Software Projects (Final
+                                Portfolio).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 bg-slate-50 dark:bg-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2
+                        class="text-brand font-semibold tracking-wide uppercase text-sm mb-2"
+                        data-i18n="sec_projects_label">
+                        Portfolio
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-bold" data-i18n="sec_projects_title">
+                        Featured Projects
+                    </h3>
+                    <div class="w-20 h-1 bg-brand mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+                    <!-- Project 1 Placeholder -->
+                    <div
+                        class="bg-white dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-100 dark:border-dark-border hover:-translate-y-2 transition-all duration-300 group shadow-lg">
+                        <div
+                            class="h-48 bg-gray-200 dark:bg-gray-800 flex items-center justify-center relative overflow-hidden">
+                            <i class="ph-light ph-image text-4xl text-gray-400"></i>
+                            <div
+                                class="absolute inset-0 bg-brand/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+                                <a
+                                    href="https://github.com/JhonatanFavoreto"
+                                    target="_blank"
+                                    class="px-6 py-2 bg-white text-brand font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all">
+                                    View Code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="text-xl font-bold" data-i18n="proj_1_title">
+                                    Full-Stack App
+                                </h4>
+                                <div class="flex gap-2 text-gray-500">
+                                    <i class="ph-fill ph-github-logo text-xl"></i>
+                                </div>
+                            </div>
+                            <p
+                                class="text-gray-600 dark:text-gray-400 text-sm mb-4"
+                                data-i18n="proj_1_desc">
+                                A modern web application built with React, Node.js, and PostgreSQL.
+                                Demonstrates clean architecture and responsive UI.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs font-semibold text-brand">
+                                <span class="bg-brand/10 px-2 py-1 rounded">React</span>
+                                <span class="bg-brand/10 px-2 py-1 rounded">Node.js</span>
+                                <span class="bg-brand/10 px-2 py-1 rounded">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 Placeholder -->
+                    <div
+                        class="bg-white dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-100 dark:border-dark-border hover:-translate-y-2 transition-all duration-300 group shadow-lg">
+                        <div
+                            class="h-48 bg-gray-200 dark:bg-gray-800 flex items-center justify-center relative overflow-hidden">
+                            <i class="ph-light ph-device-mobile text-4xl text-gray-400"></i>
+                            <div
+                                class="absolute inset-0 bg-brand/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+                                <a
+                                    href="https://github.com/JhonatanFavoreto"
+                                    target="_blank"
+                                    class="px-6 py-2 bg-white text-brand font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all">
+                                    View Code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="text-xl font-bold" data-i18n="proj_2_title">
+                                    Mobile App Expo
+                                </h4>
+                                <div class="flex gap-2 text-gray-500">
+                                    <i class="ph-fill ph-github-logo text-xl"></i>
+                                </div>
+                            </div>
+                            <p
+                                class="text-gray-600 dark:text-gray-400 text-sm mb-4"
+                                data-i18n="proj_2_desc">
+                                Cross-platform mobile application developed using React Native and
+                                Expo, featuring seamless navigation and API integration.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs font-semibold text-brand">
+                                <span class="bg-brand/10 px-2 py-1 rounded">React Native</span>
+                                <span class="bg-brand/10 px-2 py-1 rounded">Expo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View More Card -->
+                    <div
+                        class="bg-gradient-to-br from-brand/10 to-cyan-400/10 dark:from-brand/20 dark:to-cyan-400/20 rounded-2xl border border-brand/20 flex flex-col items-center justify-center p-8 text-center hover:shadow-neon transition-shadow group cursor-pointer"
+                        onclick="window.open('https://github.com/JhonatanFavoreto', '_blank')">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white dark:bg-dark-card flex items-center justify-center text-brand text-2xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2" data-i18n="proj_more_title">
+                            More on GitHub
+                        </h4>
+                        <p
+                            class="text-gray-600 dark:text-gray-400 text-sm"
+                            data-i18n="proj_more_desc">
+                            Check out all my repositories, including study projects and SENAI
+                            assignments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section id="certificates" class="py-24 bg-white dark:bg-[#0f0f0f]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2
+                        class="text-brand font-semibold tracking-wide uppercase text-sm mb-2"
+                        data-i18n="sec_cert_label">
+                        Achievements
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-bold" data-i18n="sec_cert_title">
+                        Certificates
+                    </h3>
+                    <div class="w-20 h-1 bg-brand mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
+                    <script>
+                        const certs = [
+                            {
+                                name: 'DeclaracaoMatriculaRegular_Técnico em Desenvolvimento de Sistema.pdf',
+                                title: 'Matrícula TDS - SENAI',
+                                icon: 'ph-student',
+                            },
+                            {
+                                name: 'Certificado_Por dentro da Segurança Cibernética.pdf',
+                                title: 'Segurança Cibernética',
+                                icon: 'ph-shield-check',
+                            },
+                            {
+                                name: 'Certificado_FLUÊNCIA - FUNDAMENTOS DA INTELIGÊNCIA ARTIFICIAL.pdf',
+                                title: 'Fundamentos de IA',
+                                icon: 'ph-brain',
+                            },
+                            {
+                                name: 'Certificado_Ética na Inteligência Artificial.pdf',
+                                title: 'Ética na IA',
+                                icon: 'ph-scales',
+                            },
+                            {
+                                name: 'Certificado_Excel Básic.pdf',
+                                title: 'Excel Básico',
+                                icon: 'ph-table',
+                            },
+                            {
+                                name: 'Certificado_Desvendando a Descarbonização.pdf',
+                                title: 'Descarbonização',
+                                icon: 'ph-leaf',
+                            },
+                            {
+                                name: 'Certificado_Competência Transversal - Segurança no Trabalho.pdf',
+                                title: 'Segurança no Trabalho',
+                                icon: 'ph-hard-hat',
+                            },
+                            {
+                                name: 'Certificado_REGULAMENTAÇÃO DA LGPD E ATUAÇÃO DA ANPD.pdf',
+                                title: 'LGPD e ANP',
+                                icon: 'ph-file-lock',
+                            },
+                        ];
+
+                        document.write(
+                            certs
+                                .map(
+                                    (cert) => `
+                        <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-xl hover:border-brand transition-colors group">
+                            <div class="flex items-center gap-3 overflow-hidden">
+                                <div class="w-10 h-10 rounded-lg bg-brand/10 text-brand flex items-center justify-center flex-shrink-0">
+                                    <i class="ph-fill ${cert.icon} text-xl"></i>
+                                </div>
+                                <span class="font-medium text-sm truncate" title="${cert.title}">${cert.title}</span>
+                            </div>
+                            <a href="./assets/certificates/${cert.name}" target="_blank" download class="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:bg-brand hover:text-white transition-colors flex-shrink-0">
+                                <i class="ph-bold ph-download-simple"></i>
+                            </a>
+                        </div>
+                    `,
+                                )
+                                .join(''),
+                        );
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-slate-50 dark:bg-dark relative overflow-hidden">
+            <div
+                class="absolute bottom-0 right-0 w-96 h-96 bg-brand/10 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div
+                    class="glass p-8 md:p-12 rounded-3xl border border-gray-200 dark:border-dark-border text-center reveal">
+                    <i class="ph-duotone ph-handshake text-6xl text-brand mb-6"></i>
+                    <h3 class="text-3xl md:text-5xl font-bold mb-4" data-i18n="contact_title">
+                        Let's build something together!
+                    </h3>
+                    <p
+                        class="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto"
+                        data-i18n="contact_desc">
+                        I am currently open for junior opportunities, freelance projects, or just a
+                        chat about tech. Feel free to reach out.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a
+                            href="mailto:jhonatan.favoreto18@gmail.com"
+                            class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand hover:bg-brand-light text-white font-bold transition-all shadow-neon hover:shadow-neon-hover flex items-center justify-center gap-2 text-lg">
+                            <i class="ph-bold ph-envelope-simple"></i>
+                            <span>jhonatan.favoreto18@gmail.com</span>
+                        </a>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-6 mt-10">
+                        <a
+                            href="https://www.linkedin.com/in/jhonatan-henrique-favoreto-72017434b/"
+                            target="_blank"
+                            class="w-12 h-12 rounded-full bg-gray-200 dark:bg-dark-border flex items-center justify-center text-xl hover:bg-[#0077b5] hover:text-white transition-colors">
+                            <i class="ph-fill ph-linkedin-logo"></i>
+                        </a>
+                        <a
+                            href="https://github.com/JhonatanFavoreto"
+                            target="_blank"
+                            class="w-12 h-12 rounded-full bg-gray-200 dark:bg-dark-border flex items-center justify-center text-xl hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+                            <i class="ph-fill ph-github-logo"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer
+            class="bg-white dark:bg-[#0f0f0f] py-8 border-t border-gray-100 dark:border-dark-border">
+            <div
+                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-gray-500 text-sm">
+                    &copy;
+                    <span id="year">2026</span>
+                    Jhonatan Henrique Favoreto.
+                    <span data-i18n="footer_rights">All rights reserved.</span>
+                </p>
+                <p class="text-gray-400 text-sm italic">"Code is poetry written with logic."</p>
+            </div>
+        </footer>
+
+        <!-- Back to top button -->
+        <button
+            id="back-to-top"
+            class="fixed bottom-8 right-8 w-12 h-12 bg-brand text-white rounded-full flex items-center justify-center shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-brand-light hover:-translate-y-1 z-50">
+            <i class="ph-bold ph-caret-up text-xl"></i>
+        </button>
+
+        <!-- JavaScript (Logic, i18n, Theme, Scroll) -->
+        <script>
+            // --- Translations Dictionary ---
+            const translations = {
+                en: {
+                    nav_about: 'About',
+                    nav_skills: 'Skills',
+                    nav_journey: 'Journey',
+                    nav_projects: 'Projects',
+                    nav_certificates: 'Certificates',
+                    nav_github: 'GitHub',
+                    lang_label: 'Language:',
+                    hero_badge: 'Available for opportunities in 2026',
+                    hero_greeting: "Hello, I'm",
+                    hero_bio:
+                        '18-year-old developer from Valinhos, SP. Systems Development student at SENAI. Passionate about creating efficient, responsive, and scalable digital solutions. Goal: Impact the tech market by the end of 2026.',
+                    hero_btn_contact: 'Contact Me',
+                    hero_btn_projects: 'View Projects',
+                    sec_about_label: 'Intro',
+                    sec_about_title: 'About Me',
+                    about_card_title: 'Who am I?',
+                    about_p1:
+                        'I am an 18-year-old Systems Development student currently in my 3rd semester at SENAI Valinhos, concurrently finishing my High School education at SESI.',
+                    about_p2:
+                        'My journey in tech started with a profound curiosity for how digital platforms shape our world. Today, I build full-stack web and mobile applications focusing on clean code, scalability, and excellent user experiences.',
+                    about_tag_age: '18 Years old',
+                    about_tag_pro: 'He/Him',
+                    about_goal_title: 'My Goal',
+                    about_goal_desc:
+                        'To secure my first opportunity as a Junior Developer by the end of 2026, contributing to impactful projects while continuously expanding my technical stack.',
+                    about_edu_title: 'Education',
+                    about_edu_senai: 'Systems Development Technician (2025-2026)',
+                    about_edu_sesi: 'High School (Graduating 2026)',
+                    sec_skills_label: 'Expertise',
+                    sec_skills_title: 'Tech Stack',
+                    skills_additional_title: 'Additional & Soft Skills',
+                    skill_media: 'Media Editing (Video, Audio, Image)',
+                    sec_journey_label: 'Education',
+                    sec_journey_title: 'My SENAI Journey',
+                    sec_journey_desc:
+                        'Tracking my progress through the Systems Development technical course.',
+                    sem_1_title: 'Semester 1',
+                    sem_1_desc:
+                        'Programming Logic & Algorithms, Operating Systems, Requirements Engineering, Network Architecture with IoT.',
+                    sem_2_title: 'Semester 2',
+                    sem_2_desc:
+                        'Database Systems, Markup Languages (HTML & CSS: fundamentals, responsiveness), Backend Foundations.',
+                    sem_3_title: 'Semester 3',
+                    sem_3_desc:
+                        'Backend Advanced (OOP, MVC, Frameworks, API Development), Front-End Development (Advanced JavaScript, React, UX/UI), Mobile Development (React Native, APIs, Hardware Integration).',
+                    sem_4_title: 'Semester 4',
+                    sem_4_desc:
+                        'IoT Development, Software Testing, Software Projects (Final Portfolio).',
+                    status_completed: 'Completed',
+                    status_current: 'In Progress',
+                    status_upcoming: 'Upcoming',
+                    sec_projects_label: 'Portfolio',
+                    sec_projects_title: 'Featured Projects',
+                    proj_1_title: 'Full-Stack App',
+                    proj_1_desc:
+                        'A modern web application built with React, Node.js, and PostgreSQL. Demonstrates clean architecture and responsive UI.',
+                    proj_2_title: 'Mobile App Expo',
+                    proj_2_desc:
+                        'Cross-platform mobile application developed using React Native and Expo, featuring seamless navigation and API integration.',
+                    proj_more_title: 'More on GitHub',
+                    proj_more_desc:
+                        'Check out all my repositories, including study projects and SENAI assignments.',
+                    sec_cert_label: 'Achievements',
+                    sec_cert_title: 'Certificates',
+                    contact_title: "Let's build something together!",
+                    contact_desc:
+                        'I am currently open for junior opportunities, freelance projects, or just a chat about tech. Feel free to reach out.',
+                    footer_rights: 'All rights reserved.',
+                },
+                pt: {
+                    nav_about: 'Sobre',
+                    nav_skills: 'Habilidades',
+                    nav_journey: 'Jornada',
+                    nav_projects: 'Projetos',
+                    nav_certificates: 'Certificados',
+                    nav_github: 'GitHub',
+                    lang_label: 'Idioma:',
+                    hero_badge: 'Disponível para oportunidades em 2026',
+                    hero_greeting: 'Olá, eu sou',
+                    hero_bio:
+                        'Desenvolvedor de 18 anos de Valinhos, SP. Estudante de Desenvolvimento de Sistemas no SENAI. Apaixonado por criar soluções digitais eficientes, responsivas e escaláveis. Meta: Impactar o mercado tech até o fim de 2026.',
+                    hero_btn_contact: 'Fale Comigo',
+                    hero_btn_projects: 'Ver Projetos',
+                    sec_about_label: 'Intro',
+                    sec_about_title: 'Sobre Mim',
+                    about_card_title: 'Quem sou eu?',
+                    about_p1:
+                        'Sou um estudante de Desenvolvimento de Sistemas de 18 anos, cursando o 3º semestre no SENAI Valinhos, e finalizando o Ensino Médio no SESI.',
+                    about_p2:
+                        'Minha jornada na tecnologia começou com uma profunda curiosidade sobre como as plataformas digitais moldam o nosso mundo. Hoje, construo aplicações web e mobile full-stack com foco em código limpo, escalabilidade e excelente experiência do usuário.',
+                    about_tag_age: '18 Anos',
+                    about_tag_pro: 'Ele/Dele',
+                    about_goal_title: 'Minha Meta',
+                    about_goal_desc:
+                        'Conquistar minha primeira oportunidade como Desenvolvedor Júnior até o final de 2026, contribuindo em projetos de impacto enquanto expando continuamente meu stack tecnológico.',
+                    about_edu_title: 'Formação',
+                    about_edu_senai: 'Técnico em Desenvolvimento de Sistemas (2025-2026)',
+                    about_edu_sesi: 'Ensino Médio (Conclusão 2026)',
+                    sec_skills_label: 'Expertise',
+                    sec_skills_title: 'Stack Tecnológico',
+                    skills_additional_title: 'Habilidades Adicionais e Soft Skills',
+                    skill_media: 'Edição de Mídia (Vídeo, Áudio, Imagem)',
+                    sec_journey_label: 'Formação',
+                    sec_journey_title: 'Minha Jornada SENAI',
+                    sec_journey_desc:
+                        'Acompanhe meu progresso no curso técnico de Desenvolvimento de Sistemas.',
+                    sem_1_title: '1º Semestre',
+                    sem_1_desc:
+                        'Lógica de Programação e Algoritmos, Sistemas Operacionais, Engenharia de Requisitos, Arquitetura de Redes com IoT.',
+                    sem_2_title: '2º Semestre',
+                    sem_2_desc:
+                        'Sistemas de Banco de Dados, Linguagens de Marcação (HTML e CSS: fundamentos, responsividade), Fundamentos de Backend.',
+                    sem_3_title: '3º Semestre',
+                    sem_3_desc:
+                        'Backend Avançado (POO, MVC, Frameworks, Desenvolvimento de APIs), Desenvolvimento Front-End (JavaScript Avançado, React, UX/UI), Desenvolvimento Mobile (React Native, APIs, Integração com Hardware).',
+                    sem_4_title: '4º Semestre',
+                    sem_4_desc:
+                        'Desenvolvimento IoT, Testes de Software, Projetos de Software (Portfólio Final).',
+                    status_completed: 'Concluído',
+                    status_current: 'Em Andamento',
+                    status_upcoming: 'Em Breve',
+                    sec_projects_label: 'Portfólio',
+                    sec_projects_title: 'Projetos em Destaque',
+                    proj_1_title: 'App Full-Stack',
+                    proj_1_desc:
+                        'Aplicação web moderna construída com React, Node.js e PostgreSQL. Demonstra arquitetura limpa e UI responsiva.',
+                    proj_2_title: 'App Mobile Expo',
+                    proj_2_desc:
+                        'Aplicativo mobile multiplataforma desenvolvido com React Native e Expo, com navegação fluida e integração de API.',
+                    proj_more_title: 'Mais no GitHub',
+                    proj_more_desc:
+                        'Confira todos os meus repositórios, incluindo projetos de estudo e trabalhos do SENAI.',
+                    sec_cert_label: 'Conquistas',
+                    sec_cert_title: 'Certificados',
+                    contact_title: 'Vamos construir algo juntos!',
+                    contact_desc:
+                        'Estou aberto a oportunidades júnior, projetos freelance ou apenas um bate-papo sobre tecnologia. Sinta-se à vontade para entrar em contato.',
+                    footer_rights: 'Todos os direitos reservados.',
+                },
+                es: {
+                    nav_about: 'Sobre mí',
+                    nav_skills: 'Habilidades',
+                    nav_journey: 'Trayectoria',
+                    nav_projects: 'Proyectos',
+                    nav_certificates: 'Certificados',
+                    nav_github: 'GitHub',
+                    lang_label: 'Idioma:',
+                    hero_badge: 'Disponible para oportunidades en 2026',
+                    hero_greeting: 'Hola, soy',
+                    hero_bio:
+                        'Desarrollador de 18 años de Valinhos, SP. Estudiante de Desarrollo de Sistemas en SENAI. Apasionado por crear soluciones digitales eficientes, responsivas y escalables. Meta: Impactar el mercado tech a finales de 2026.',
+                    hero_btn_contact: 'Contáctame',
+                    hero_btn_projects: 'Ver Proyectos',
+                    sec_about_label: 'Intro',
+                    sec_about_title: 'Sobre Mí',
+                    about_card_title: '¿Quién soy?',
+                    about_p1:
+                        'Soy un estudiante de Desarrollo de Sistemas de 18 años, cursando el 3er semestre en SENAI Valinhos, y terminando la Escuela Secundaria en SESI.',
+                    about_p2:
+                        'Mi viaje en la tecnología comenzó con una profunda curiosidad sobre cómo las plataformas digitales moldean nuestro mundo. Hoy, construyo aplicaciones web y móviles full-stack enfocadas en código limpio, escalabilidad y excelentes experiencias de usuario.',
+                    about_tag_age: '18 Años',
+                    about_tag_pro: 'Él',
+                    about_goal_title: 'Mi Meta',
+                    about_goal_desc:
+                        'Conseguir mi primera oportunidad como Desarrollador Junior a finales de 2026, contribuyendo a proyectos impactantes mientras expando continuamente mis habilidades técnicas.',
+                    about_edu_title: 'Educación',
+                    about_edu_senai: 'Técnico en Desarrollo de Sistemas (2025-2026)',
+                    about_edu_sesi: 'Escuela Secundaria (Graduación 2026)',
+                    sec_skills_label: 'Experiencia',
+                    sec_skills_title: 'Stack Tecnológico',
+                    skills_additional_title: 'Habilidades Adicionales y Blandas',
+                    skill_media: 'Edición de Medios (Video, Audio, Imagen)',
+                    sec_journey_label: 'Educación',
+                    sec_journey_title: 'Mi Trayectoria SENAI',
+                    sec_journey_desc:
+                        'Seguimiento de mi progreso a través del curso técnico de Desarrollo de Sistemas.',
+                    sem_1_title: '1er Semestre',
+                    sem_1_desc:
+                        'Lógica de Programación y Algoritmos, Sistemas Operativos, Ingeniería de Requisitos, Arquitectura de Redes con IoT.',
+                    sem_2_title: '2do Semestre',
+                    sem_2_desc:
+                        'Sistemas de Bases de Datos, Lenguajes de Marcado (HTML y CSS: fundamentos, diseño responsivo), Fundamentos de Backend.',
+                    sem_3_title: '3er Semestre',
+                    sem_3_desc:
+                        'Backend Avanzado (POO, MVC, Frameworks, Desarrollo de APIs), Desarrollo Front-End (JavaScript Avanzado, React, UX/UI), Desarrollo Mobile (React Native, APIs, Integración con Hardware).',
+                    sem_4_title: '4to Semestre',
+                    sem_4_desc:
+                        'Desarrollo IoT, Pruebas de Software, Proyectos de Software (Portafolio Final).',
+                    status_completed: 'Completado',
+                    status_current: 'En Progreso',
+                    status_upcoming: 'Próximamente',
+                    sec_projects_label: 'Portafolio',
+                    sec_projects_title: 'Proyectos Destacados',
+                    proj_1_title: 'App Full-Stack',
+                    proj_1_desc:
+                        'Una moderna aplicación web construida con React, Node.js y PostgreSQL. Demuestra arquitectura limpia y UI responsiva.',
+                    proj_2_title: 'App Móvil Expo',
+                    proj_2_desc:
+                        'Aplicación móvil multiplataforma desarrollada con React Native y Expo, con navegación fluida e integración de API.',
+                    proj_more_title: 'Más en GitHub',
+                    proj_more_desc:
+                        'Revisa todos mis repositorios, incluyendo proyectos de estudio y trabajos de SENAI.',
+                    sec_cert_label: 'Logros',
+                    sec_cert_title: 'Certificados',
+                    contact_title: '¡Construyamos algo juntos!',
+                    contact_desc:
+                        'Actualmente estoy abierto a oportunidades junior, proyectos freelance o simplemente charlar sobre tecnología. No dudes en contactarme.',
+                    footer_rights: 'Todos los derechos reservados.',
+                },
+            };
+
+            // --- Logic: i18n ---
+            function setLanguage(lang) {
+                localStorage.setItem('portfolio_lang', lang);
+                document.querySelectorAll('[data-i18n]').forEach((el) => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                            el.placeholder = translations[lang][key];
+                        } else {
+                            el.innerHTML = translations[lang][key];
+                        }
+                    }
+                });
+                // Sync selects
+                document.getElementById('lang-select').value = lang;
+                document.getElementById('lang-select-mobile').value = lang;
+            }
+
+            // Init language
+            const savedLang = localStorage.getItem('portfolio_lang') || 'en';
+            setLanguage(savedLang);
+
+            // Listeners
+            document
+                .getElementById('lang-select')
+                .addEventListener('change', (e) => setLanguage(e.target.value));
+            document
+                .getElementById('lang-select-mobile')
+                .addEventListener('change', (e) => setLanguage(e.target.value));
+
+            // --- Logic: Dark Mode ---
+            const html = document.documentElement;
+            const themeToggles = [
+                document.getElementById('theme-toggle'),
+                document.getElementById('theme-toggle-mobile'),
+            ];
+
+            function setTheme(isDark) {
+                if (isDark) {
+                    html.classList.add('dark');
+                    localStorage.setItem('portfolio_theme', 'dark');
+                } else {
+                    html.classList.remove('dark');
+                    localStorage.setItem('portfolio_theme', 'light');
+                }
+            }
+
+            // Init theme
+            const savedTheme = localStorage.getItem('portfolio_theme');
+            if (savedTheme === 'light') {
+                setTheme(false);
+            } else if (savedTheme === 'dark') {
+                setTheme(true);
+            } else {
+                // Check system preference
+                if (
+                    window.matchMedia &&
+                    window.matchMedia('(prefers-color-scheme: light)').matches
+                ) {
+                    setTheme(false);
+                } else {
+                    setTheme(true); // Default dark premium
+                }
+            }
+
+            themeToggles.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    setTheme(!html.classList.contains('dark'));
+                });
+            });
+
+            // --- Logic: Mobile Menu ---
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close menu on link click
+            mobileMenu.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // --- Logic: Scroll Animations (Reveal) ---
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealCallback = (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            };
+
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px',
+            };
+
+            const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+            revealElements.forEach((el) => revealObserver.observe(el));
+
+            // --- Logic: Navbar blur on scroll & Back to Top ---
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-md');
+                    backToTop.classList.remove('opacity-0', 'pointer-events-none');
+                    backToTop.classList.add('opacity-100', 'pointer-events-auto');
+                } else {
+                    navbar.classList.remove('shadow-md');
+                    backToTop.classList.add('opacity-0', 'pointer-events-none');
+                    backToTop.classList.remove('opacity-100', 'pointer-events-auto');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+    </body>
+</html>
