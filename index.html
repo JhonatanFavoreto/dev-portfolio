@@ -947,65 +947,139 @@
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
                     <script>
-                        const certs = [
+                        const categories = [
                             {
-                                name: 'DeclaracaoMatriculaRegular_Técnico em Desenvolvimento de Sistema.pdf',
-                                title: 'Matrícula TDS - SENAI',
-                                icon: 'ph-student',
+                                title: 'Tecnologia e Inovação',
+                                certs: [
+                                    {
+                                        name: 'certificado-fundamentos-ia.pdf',
+                                        title: 'Fundamentos de IA',
+                                        icon: 'ph-brain',
+                                    },
+                                    {
+                                        name: 'certificado-etica-ia.pdf',
+                                        title: 'Ética na IA',
+                                        icon: 'ph-scales',
+                                    },
+                                    {
+                                        name: 'certificado-seguranca-cibernetica.pdf',
+                                        title: 'Seg. Cibernética',
+                                        icon: 'ph-shield-check',
+                                    },
+                                    {
+                                        name: 'certificado-industria-4-0.pdf',
+                                        title: 'Indústria 4.0',
+                                        icon: 'ph-factory',
+                                    },
+                                ],
                             },
                             {
-                                name: 'Certificado_Por dentro da Segurança Cibernética.pdf',
-                                title: 'Segurança Cibernética',
-                                icon: 'ph-shield-check',
+                                title: 'Gestão e Produtividade',
+                                certs: [
+                                    {
+                                        name: 'certificado-gestao-projetos.pdf',
+                                        title: 'Gestão de Projetos',
+                                        icon: 'ph-kanban',
+                                    },
+                                    {
+                                        name: 'certificado-gestao-tempo.pdf',
+                                        title: 'Gestão do Tempo',
+                                        icon: 'ph-hourglass-medium',
+                                    },
+                                    {
+                                        name: 'certificado-excel-basico.pdf',
+                                        title: 'Excel Básico',
+                                        icon: 'ph-table',
+                                    },
+                                    {
+                                        name: 'certificado-design-thinking.pdf',
+                                        title: 'Design Thinking',
+                                        icon: 'ph-lightbulb',
+                                    },
+                                    {
+                                        name: 'certificado-empreender-senai.pdf',
+                                        title: 'Empreendedorismo',
+                                        icon: 'ph-rocket-launch',
+                                    },
+                                ],
                             },
                             {
-                                name: 'Certificado_FLUÊNCIA - FUNDAMENTOS DA INTELIGÊNCIA ARTIFICIAL.pdf',
-                                title: 'Fundamentos de IA',
-                                icon: 'ph-brain',
+                                title: 'Sustentabilidade e Normas',
+                                certs: [
+                                    {
+                                        name: 'certificado-esg.pdf',
+                                        title: 'Desvendando o ESG',
+                                        icon: 'ph-globe-hemisphere-west',
+                                    },
+                                    {
+                                        name: 'certificado-descarbonizacao.pdf',
+                                        title: 'Descarbonização',
+                                        icon: 'ph-leaf',
+                                    },
+                                    {
+                                        name: 'certificado-economia-circular.pdf',
+                                        title: 'Economia Circular',
+                                        icon: 'ph-recycle',
+                                    },
+                                    {
+                                        name: 'certificado-lgpd.pdf',
+                                        title: 'LGPD e ANPD',
+                                        icon: 'ph-file-lock',
+                                    },
+                                    {
+                                        name: 'certificado-seguranca-trabalho.pdf',
+                                        title: 'Seg. no Trabalho',
+                                        icon: 'ph-hard-hat',
+                                    },
+                                    {
+                                        name: 'certificado-cidadania-digital.pdf',
+                                        title: 'Cidadania Digital',
+                                        icon: 'ph-users',
+                                    },
+                                ],
                             },
                             {
-                                name: 'Certificado_Ética na Inteligência Artificial.pdf',
-                                title: 'Ética na IA',
-                                icon: 'ph-scales',
-                            },
-                            {
-                                name: 'Certificado_Excel Básic.pdf',
-                                title: 'Excel Básico',
-                                icon: 'ph-table',
-                            },
-                            {
-                                name: 'Certificado_Desvendando a Descarbonização.pdf',
-                                title: 'Descarbonização',
-                                icon: 'ph-leaf',
-                            },
-                            {
-                                name: 'Certificado_Competência Transversal - Segurança no Trabalho.pdf',
-                                title: 'Segurança no Trabalho',
-                                icon: 'ph-hard-hat',
-                            },
-                            {
-                                name: 'Certificado_REGULAMENTAÇÃO DA LGPD E ATUAÇÃO DA ANPD.pdf',
-                                title: 'LGPD e ANP',
-                                icon: 'ph-file-lock',
+                                title: 'Formação Educacional',
+                                certs: [
+                                    {
+                                        name: 'declaracao-matricula-tds-2026.pdf',
+                                        title: 'Matrícula TDS 2026 - SENAI',
+                                        icon: 'ph-student',
+                                    },
+                                    {
+                                        name: 'declaracao-matricula-tds-2026.pdf',
+                                        title: 'Matrícula 3º EM 2026 - SESI',
+                                        icon: 'ph-student',
+                                    },
+                                ],
                             },
                         ];
 
                         document.write(
-                            certs
+                            categories
                                 .map(
-                                    (cert) => `
-                        <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-xl hover:border-brand transition-colors group">
-                            <div class="flex items-center gap-3 overflow-hidden">
-                                <div class="w-10 h-10 rounded-lg bg-brand/10 text-brand flex items-center justify-center flex-shrink-0">
-                                    <i class="ph-fill ${cert.icon} text-xl"></i>
+                                    (category) => `
+                                <div class="col-span-full md:col-span-2 lg:col-span-3 mt-6 mb-2">
+                                    <h4 class="text-xl font-bold text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-dark-border pb-2">${category.title}</h4>
                                 </div>
-                                <span class="font-medium text-sm truncate" title="${cert.title}">${cert.title}</span>
-                            </div>
-                            <a href="./assets/certificates/${cert.name}" target="_blank" download class="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:bg-brand hover:text-white transition-colors flex-shrink-0">
-                                <i class="ph-bold ph-download-simple"></i>
-                            </a>
-                        </div>
-                    `,
+                                ${category.certs
+                                    .map(
+                                        (cert) => `
+                                <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-xl hover:border-brand transition-colors group h-full">
+                                    <div class="flex items-center gap-3 overflow-hidden">
+                                        <div class="w-10 h-10 rounded-lg bg-brand/10 text-brand flex items-center justify-center flex-shrink-0">
+                                            <i class="ph-fill ${cert.icon} text-xl"></i>
+                                        </div>
+                                        <span class="font-medium text-sm truncate" title="${cert.title}">${cert.title}</span>
+                                    </div>
+                                    <a href="./assets/certificates/${cert.name}" target="_blank" download class="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:bg-brand hover:text-white transition-colors flex-shrink-0">
+                                        <i class="ph-bold ph-download-simple"></i>
+                                    </a>
+                                </div>
+                                `,
+                                    )
+                                    .join('')}
+                            `,
                                 )
                                 .join(''),
                         );
